@@ -11,7 +11,7 @@ return [
 
     'clear_branch_cache' => [
         'path' => '/branch-cache/clear',
-        'target' => ContextMenuController::class . '::clearBranchCacheAction'
+        'target' => ContextMenuController::class . '::clearBranchCacheAction',
     ],
 
 ];

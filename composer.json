@@ -6,12 +6,14 @@
     "license": ["GPL-2.0+"],
     "keywords": ["TYPO3 CMS", "cache"],
     "version": "1.0.0",
-    "support": {
-        "issues": "..."
-    },
     "autoload": {
         "psr-4": {
             "Cobweb\\BranchCache\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "branch_cache"
         }
     },
     "replace": {

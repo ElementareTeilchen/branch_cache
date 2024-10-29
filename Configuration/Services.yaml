@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    autoconfigure: false
+
+  Cobweb\BranchCache\ContextMenu\BranchCacheItemProvider:
+    tags:
+      - name: backend.contextmenu.itemprovider

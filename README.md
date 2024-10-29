@@ -1,18 +1,14 @@
 Branch Cache
 ============
 
-This is a TYPO3 CMS extension which adds a new entry in the context menu to
-clear the cache for an entire branch. The extension is compatible with TYPO3 CMS
-8
-
-![](https://raw.github.com/cobwebch/branch_cache/master/Documentation/Screenshot.png)
+This is a TYPO3 CMS extension which adds a new entry in the context menu of pages
+in the page tree to clear the cache for an entire branch.
 
 Installation
 ------------
 
 The installation is straightforward. Install the extension via composer,
-activate in the Extension Manager, reload the whole Backend and start clearing
-your cache! :)
+reload the whole Backend and start clearing your cache! :)
 
 ```
 composer require cobweb/branch-cache
