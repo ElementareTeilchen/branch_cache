@@ -5,7 +5,6 @@
     "homepage": "...",
     "license": ["GPL-2.0+"],
     "keywords": ["TYPO3 CMS", "cache"],
-    "version": "1.0.0",
     "autoload": {
         "psr-4": {
             "Cobweb\\BranchCache\\": "Classes/"
