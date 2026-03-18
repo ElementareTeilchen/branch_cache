@@ -10,6 +10,9 @@
             "Cobweb\\BranchCache\\": "Classes/"
         }
     },
+    "require": {
+        "typo3/cms-core": "^12.4 || ^13.4 || ^14.1"
+    },
     "extra": {
         "typo3/cms": {
             "extension-key": "branch_cache"

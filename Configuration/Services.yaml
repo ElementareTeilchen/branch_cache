@@ -1,7 +1,17 @@
 services:
   _defaults:
-    autoconfigure: false
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Cobweb\BranchCache\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
 
   Cobweb\BranchCache\ContextMenu\BranchCacheItemProvider:
+    public: true
     tags:
       - name: backend.contextmenu.itemprovider
+
+  Cobweb\BranchCache\Controller\ContextMenuController:
+    public: true

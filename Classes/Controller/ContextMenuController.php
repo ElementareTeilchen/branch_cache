@@ -14,6 +14,7 @@ use TYPO3\CMS\Backend\Tree\Repository\PageTreeRepository;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -23,6 +24,15 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ContextMenuController
 {
+    protected LanguageService $languageService;
+
+    public function __construct(
+        protected readonly PageTreeRepository $pageTreeRepository,
+        protected readonly LanguageServiceFactory $languageServiceFactory
+    ) {
+        $this->languageService = $this->languageServiceFactory->createFromUserPreferences($GLOBALS['BE_USER']);
+    }
+
     /**
      * Clear branch cache action
      *
@@ -33,8 +43,7 @@ class ContextMenuController
     {
         $pageId = $request->getQueryParams()['id'];
 
-        $pageTreeRepository = GeneralUtility::makeInstance(PageTreeRepository::class);
-        $pages = $pageTreeRepository->getTree($pageId);
+        $pages = $this->pageTreeRepository->getTree($pageId);
 
         $nodeUids = $this->transformTreeStructureIntoFlatArray([$pages]);
         $nodeUids = \array_unique($nodeUids);
@@ -106,16 +115,6 @@ class ContextMenuController
     public function getLabel(string $id): string
     {
         $locallangFileAndPath = 'LLL:EXT:branch_cache/Resources/Private/Language/locallang.xlf:' . $id;
-        return $this->getLanguageService()->sL($locallangFileAndPath);
-    }
-
-    /**
-     * Returns LanguageService
-     *
-     * @return LanguageService
-     */
-    protected function getLanguageService(): LanguageService
-    {
-        return $GLOBALS['LANG'];
+        return $this->languageService->sL($locallangFileAndPath);
     }
 }
